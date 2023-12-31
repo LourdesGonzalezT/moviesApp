@@ -51,18 +51,20 @@
             </button>
         </div>
     </div>
-<?php
+    <?php
 $sql = $connection->query("SELECT * FROM movies ORDER BY id_movie DESC");
 ?>
     <div class="container-fluid">
         <h1 class="display-6 text-center p-3 text-warning">Cartelera</h1>
-          <!-- Este div modifica el número de cards por fila -->
+        <!-- Este div modifica el número de cards por fila -->
         <div class="row row-cols-1 row-cols-md-3 g-4">
-        <?php while ($data = $sql->fetch_object()) { ?>
+            <?php while ($data = $sql->fetch_object()) { ?>
             <div class="col">
                 <div class="card h-100">
-                     <!-- La imagen es un enlace a la vista detallada de una película -->
-                   <a href=""><img src="<?=$data->image_path?>" class="card-img-top" alt="..."></a> 
+                    <!-- La imagen es un enlace a la vista detallada de una película -->
+                    <a href="movie-details.php?id_movie=<?= $data->id_movie?>">
+                        <img src="<?=$data->image_path?>" class="card-img-top" alt="...">
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title"><?=$data->title?></h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
@@ -79,7 +81,7 @@ $sql = $connection->query("SELECT * FROM movies ORDER BY id_movie DESC");
 
 
 
-
+ 
 
 
 
