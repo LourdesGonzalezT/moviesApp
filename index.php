@@ -1,5 +1,5 @@
-<?php include "header.php" 
-
+<?php include "header.php" ;
+ include "controller/delete-movie.php";
 ?>
 
 <!--Aqui termina el header y comienza el contenido principal-->
@@ -67,23 +67,16 @@ $sql = $connection->query("SELECT * FROM movies ORDER BY id_movie DESC");
                     </a>
                     <div class="card-body">
                         <h5 class="card-title"><?=$data->title?></h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
                     </div>
-                    <div class="card-footer">
-                        <small class="text-body-secondary">Last updated 3 mins ago</small>
-                    </div>
+                    <a href="edit-movie-form.php?id_movie=<?= $data->id_movie?>" class="btn btn-warning">Editar<i
+                            class="fa-solid fa-user-pen"></i></a>
+                    <a onclick="return confirmaBorrar()" href="index.php?id_movie=<?= $data->id_movie?>" class="btn btn-danger">Borrar<i
+                            class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             <?php } ?>
         </div>
     </div>
-
-
-
- 
-
-
 
 
 </main>

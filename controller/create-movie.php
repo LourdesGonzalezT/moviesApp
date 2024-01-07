@@ -34,7 +34,7 @@ if(!empty($_POST["btnregister"])){
         /*Primero creo el registro con el campo image_path vacío, luego obtengo el id y se lo añado al nombre de la imagen*/
             $register = $connection->query("INSERT INTO movies(title, director, idiom, genre, age_classification, synopsis, actors, punctuation, duration, release_date, image_path) VALUES ('$title', '$director', '$idiom', '$genre', '$age_classification', '$synopsis', '$actors', '$punctuation', '$duration', '$release_date', '')");
             if($register){
-        //luego obtengo el id  del nuevo registroy se lo añado al nombre de la imagen
+        //luego obtengo el id  del nuevo registro y se lo añado al nombre de la imagen
             $idRegister = $connection->insert_id;
             //img_path = $imgDirectory . $imgName;
             //Con el id de registro y su formato renombro el archivo creando la ruta del archivo concatenando las variables $directorio $idRegister y $imgType 
