@@ -32,8 +32,7 @@
                         <div class="card-img-overlay d-flex flex-column justify-content-center text-start">
                             <h5 class="card-title"><?= $data->title ?></h5>
                             <p class="card-text"><?= $data->synopsis ?></p>
-                            <a href="movie-details.php?id_movie=<?= $data->id_movie?>"
-                                class="btn btn-primary btn-sm d-inline-block text-center">Ver película</a>
+                            <a href="movie-details.php?id_movie=<?= $data->id_movie?>" class="btn btn-primary btn-sm d-inline-block text-center">Ver película</a>
                         </div>
                     </div>
                 </div>
@@ -60,20 +59,22 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <?php while ($data = $sql->fetch_object()) { ?>
             <div class="col">
-                
-                <a href="movie-details.php?id_movie=<?= $data->id_movie?>">
-                <div class="card bg-dark text-white">
-                    <img src="<?=$data->image_path?>" class="card-img-top" alt="...">
-               
-                    <div class="card-img-overlay">
-                        <p class="card-text"><?=$data->release_date?></p>
+                <div class="card h-100">
+                    <!-- La imagen es un enlace a la vista detallada de una película -->
+                    <a href="movie-details.php?id_movie=<?= $data->id_movie?>">
+                        <img src="<?=$data->image_path?>" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title"><?=$data->title?></h5>
                     </div>
-                    <h5 class="card-title"><?=$data->title?></h5>
+                    <a href="edit-movie-form.php?id_movie=<?= $data->id_movie?>" class="btn btn-warning">Editar<i
+                            class="fa-solid fa-user-pen"></i></a>
+                    <a onclick="return confirmaBorrar()" href="index.php?id_movie=<?= $data->id_movie?>"
+                        class="btn btn-danger">Borrar<i class="fa-solid fa-trash-can"></i></a>
                 </div>
-                </a>
+            </div>
+            <?php } ?>
         </div>
-        <?php } ?>
-    </div>
     </div>
 
 </main>
@@ -82,10 +83,10 @@
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
 </script>
 <script>
-function stopCarouselTransition() {
-    var carousel = document.getElementById('carouselExampleCaptions');
-    carousel.setAttribute('data-bs-interval', 'false');
-}
+    function stopCarouselTransition() {
+        var carousel = document.getElementById('carouselExampleCaptions');
+        carousel.setAttribute('data-bs-interval', 'false');
+    }
 </script>
 </body>
 
