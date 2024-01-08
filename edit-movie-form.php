@@ -1,17 +1,18 @@
 <?php
-  include "header.php";
-  include "controller/edit-movie.php";
-    ?>
-<?php $idMovieToEdit=$_GET['id_movie'];
- $sql = $connection->query("SELECT * FROM movies WHERE id_movie = '$idMovieToEdit'");
+    include "header.php";
+    include "controller/edit-movie.php";
+?>
+<?php
+    $idMovieToEdit=$_GET['id_movie'];
+    $sql = $connection->query("SELECT * FROM movies WHERE id_movie = '$idMovieToEdit'");
  ?>
 
 <!--Aqui termina el header-->
 
 <div class="container-fluid">
-    <?php
-                while($data=$sql->fetch_object()) {
-                ?>
+
+    <?php while($data=$sql->fetch_object()) { ?>
+
     <form class="row g-3" action="" enctype="multipart/form-data" method="POST">
         <input type="hidden" name="id_movie" value="<?= $_GET['id_movie']?>">
 
@@ -47,7 +48,6 @@
             <input type="text" class="form-control" name="age_classification" id="age_classification"
                 value="<?=$data->age_classification?>" required>
         </div>
-
         <div class="col-12">
             <label for="synopsis" class="form-label">Sinopsis</label>
             <textarea class="form-control" name="synopsis" id="synopsis" cols="30" rows="3"
@@ -73,19 +73,14 @@
                 value="<?= $data->release_date ?>" required>
         </div>
         <div class="col-12">
-            <label for="current_image" class="form-label">Imagen actual</label>
-            <img src="<?= $data->image_path ?>" alt="Imagen actual" style="max-width: 100%;">
+            <label for="image" class="form-label">Imagen actual</label>
+            <img src="<?= $data->image_path ?>" alt="Imagen actual" style="max-width: 30%;">
             <input type="file" class="form-control" name="image" id="image">
         </div>
-        <!-- <input type="submit" class="form-control btn btn-success mt-3" value="Edit" name="btnedit"> -->
         <button type="submit" class="btn btn-primary" name="btnedit" value="ok">Guardar cambios</button>
     </form>
-    <?php
-                }
-                ?>
+    <?php } ?>
 </div>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

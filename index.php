@@ -1,9 +1,8 @@
-<?php include "header.php" ;
- include "controller/delete-movie.php";
+<?php 
+    include "header.php" ;
+    include "controller/delete-movie.php";
 ?>
-
 <!--Aqui termina el header y comienza el contenido principal-->
-
 <main>
 
     <div class="container-fluid">
@@ -51,9 +50,7 @@
             </button>
         </div>
     </div>
-    <?php
-$sql = $connection->query("SELECT * FROM movies ORDER BY id_movie DESC");
-?>
+    <?php $sql = $connection->query("SELECT * FROM movies ORDER BY id_movie DESC"); ?>
     <div class="container-fluid">
         <h1 class="display-6 text-center p-3 text-warning">Cartelera</h1>
         <!-- Este div modifica el número de cards por fila -->
@@ -70,20 +67,15 @@ $sql = $connection->query("SELECT * FROM movies ORDER BY id_movie DESC");
                     </div>
                     <a href="edit-movie-form.php?id_movie=<?= $data->id_movie?>" class="btn btn-warning">Editar<i
                             class="fa-solid fa-user-pen"></i></a>
-                    <a onclick="return confirmaBorrar()" href="index.php?id_movie=<?= $data->id_movie?>" class="btn btn-danger">Borrar<i
-                            class="fa-solid fa-trash-can"></i></a>
+                    <a onclick="return confirmaBorrar()" href="index.php?id_movie=<?= $data->id_movie?>"
+                        class="btn btn-danger">Borrar<i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
             <?php } ?>
         </div>
     </div>
 
-
 </main>
-
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

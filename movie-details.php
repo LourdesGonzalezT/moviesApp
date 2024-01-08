@@ -1,23 +1,14 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 ?>
-<?php include "header.php"
-?>
+<?php include "header.php"?>
 
 <!--Aqui termina el header y comienza el contenido principal de la vista de detalles-->
-
 <?php
-/* ahora creamos una variable para captuar la id del botón de detalles
-La función isset sirve para comprobar si una variable existe y tiene valor. 
-Si esta apareciendo en el navegador, el GET me lo dice, ya que lo recoge vía pública. Si hay algo en el 
-navegador que pueda recoger, hacer lo siguiente*/
-    /* La función isset() se utiliza para comprobar si una variable existe y tiene un valor distinto de null. En este caso, se está utilizando para comprobar si la variable $_GET['id_movie'] existe y tiene un valor distinto de null.*/
     if (isset($_GET['id_movie'])) {
-    // Recuperar el ID de la película de la URL
-    $id_oneMovie = $_GET['id_movie']; // Asegúrate de validar y sanitizar esta entrada para evitar problemas de seguridad
-    // Consultar la base de datos para obtener los detalles de la película con el ID proporcionado
+    $id_oneMovie = $_GET['id_movie']; 
     $sql = $connection->query("SELECT * FROM movies WHERE id_movie = $id_oneMovie");
 ?>
 
@@ -52,8 +43,10 @@ navegador que pueda recoger, hacer lo siguiente*/
                 </div>
             </div>
         </div>
-        <?php } 
-         }?>
+        <?php 
+        } 
+         }
+         ?>
     </div>
 </main>
 

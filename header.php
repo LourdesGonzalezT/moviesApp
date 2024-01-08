@@ -1,6 +1,4 @@
-<?php
-include "connection/connection.php";
-?>
+<?php include "connection/connection.php";?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +12,6 @@ include "connection/connection.php";
 
 <body>
     <!--Aqui comienza el header-->
-
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
