@@ -5,15 +5,15 @@
 <!--Aqui termina el header y comienza el contenido principal-->
 <main>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="carousel-container">
         <?php 
             $sql = $connection->query("SELECT * FROM movies ORDER BY punctuation DESC LIMIT 3");
             $counter = 0; // Contador para manejar la clase 'active' del carousel
         ?>
-        <div id="carouselExampleCaptions" class="carousel slide">
+        <div id="carouselIndex" class="carousel slide">
             <div class="carousel-indicators">
                 <?php while ($data = $sql->fetch_object()) { ?>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?= $counter ?>"
+                <button type="button" data-bs-target="#carouselIndex" data-bs-slide-to="<?= $counter ?>"
                     class="<?= ($counter == 0) ? 'active' : '' ?>"
                     aria-current="<?= ($counter == 0) ? 'true' : 'false' ?>"
                     aria-label="Slide <?= $counter + 1 ?>"></button>
@@ -30,23 +30,25 @@
                     <div class="card bg-dark text-white d-flex">
                         <img src="<?= $data->image_path ?>" class="card-img" alt="...">
                         <div class="card-img-overlay d-flex flex-column justify-content-center text-start">
-                            <h5 class="card-title"><?= $data->title ?></h5>
-                            <p class="card-text"><?= $data->synopsis ?></p>
+                            <h1 class="card-title card-titleCarousel"><?= $data->title ?></h1>
+                            <?php
+                            $year = date("Y", strtotime($data->release_date));
+                            ?>
+                            <p class="card-text year"><?= $year ?></p>
+                            <p class="card-text card-text-synopsisInCarousel"><?= $data->synopsis ?></p>
                             <a href="movie-details.php?id_movie=<?= $data->id_movie?>"
-                                class="btn btn-primary btn-sm d-inline-block text-center">Ver película</a>
+                                class="btn btn-primary btn-sm d-inline-block text-center btn-carousel">Ver película</a>
                         </div>
                     </div>
                 </div>
                 <?php $counter++; ?>
                 <?php } ?>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndex" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselIndex" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
@@ -55,25 +57,28 @@
     </div>
     <?php $sql = $connection->query("SELECT * FROM movies ORDER BY id_movie DESC"); ?>
     <div class="container-fluid">
-        <h1 class="display-6 text-center p-3 text-warning">Cartelera</h1>
+        <h1 class="display-6  p-3 text-warning">Películas Online</h1>
         <!-- Este div modifica el número de cards por fila -->
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-4 container-cardsIndex">
             <?php while ($data = $sql->fetch_object()) { ?>
-            <div class="col">
-                
-                <a href="movie-details.php?id_movie=<?= $data->id_movie?>">
-                <div class="card bg-dark text-white">
-                    <img src="<?=$data->image_path?>" class="card-img-top" alt="...">
-               
-                    <div class="card-img-overlay">
-                        <p class="card-text"><?=$data->release_date?></p>
-                    </div>
-                    <h5 class="card-title"><?=$data->title?></h5>
+            <div class="col cardIndex">
+                <div class="oneCardContainer h-100">
+                    <a href="movie-details.php?id_movie=<?= $data->id_movie?>">
+                        <div class="h-100">
+                            <div class="card bg-dark text-white h-100 ">
+                                <img src="<?=$data->image_path?>" class="card-img-top h-100" alt="...">
+                                <div class="card-img-overlay">
+                                    <p class="card-text year"><?=$year?></p>
+                                </div>
+                            </div>
+                            <h6 class="card-title text-center"><?=$data->title?></h6>
+                        </div>
+                    </a>
                 </div>
-                </a>
+
+            </div>
+            <?php } ?>
         </div>
-        <?php } ?>
-    </div>
     </div>
 
 </main>
@@ -83,7 +88,7 @@
 </script>
 <script>
 function stopCarouselTransition() {
-    var carousel = document.getElementById('carouselExampleCaptions');
+    var carousel = document.getElementById('carouselIndex');
     carousel.setAttribute('data-bs-interval', 'false');
 }
 </script>

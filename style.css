@@ -1,3 +1,77 @@
+/* index */
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body{
-    background-color: rgb(4, 4, 44);
+    background-color:#080f28;
+}
+
+/*Carousel*/
+#carousel-container {
+    height: 50vh;
+    overflow: hidden; 
+    padding: 0%;
+}
+
+#carouselIndex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; 
+}
+
+#carouselIndex img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+}
+
+.card-text-synopsisInCarousel, .year{
+  color:grey
+}
+
+.btn-carousel {
+    width: 100px;
+    z-index: 2;
+}
+
+/*Index-Cards*/
+.container-cardsIndex a{
+    text-decoration: none;
+}
+.title-cardIndex{
+    text-decoration: none;
+    color: white;
+}
+
+.year {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    z-index: 3;
+    font-size: .75rem;
+    font-weight: 700;
+    background-color: #007aff;
+    padding: 0 0.5rem;
+    line-height: 1.2rem;
+    border-radius: 1rem;
+    color: white;
+}
+
+.oneCardContainer {
+    padding-bottom: 20px; 
+}
+
+.oneCardContainer h6{
+    color: white;
+}
+
+.oneCardContainer:hover .year,
+.oneCardContainer:hover h6 {
+    color: red;
 }
