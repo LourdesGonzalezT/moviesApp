@@ -1,34 +1,16 @@
-<?php
-include "header.php";
-include "controller/delete-movie.php";
-
-// Verificar si se proporcionó un género en la URL
-if (isset($_GET['genre'])) {
-    $genre_selected = $_GET['genre'];
-
-    // Consultar películas filtradas por el género seleccionado
-    $sql = $connection->prepare("SELECT * FROM movies WHERE genre = ? ORDER BY id_movie DESC");
-    $sql->bind_param("s", $genre_selected);
-    $sql->execute();
-    $result = $sql->get_result();
-} else {
-    // Si no se proporciona un género, mostrar todas las películas
-    $sql = $connection->query("SELECT * FROM movies ORDER BY id_movie DESC");
-    $result = $sql;
-}
+<?php 
+    include "header.php" ;
+    include "controller/delete-movie.php";
 ?>
 <!--Aqui termina el header y comienza el contenido principal-->
-
 <main>
+<h1>LISTADO PELÍCULAS MEJOR VALORADAS</h1>
+    <?php $sql = $connection->query("SELECT * FROM movies ORDER BY punctuation DESC"); ?>
     <div class="container-fluid">
         <h1 class="display-6 text-center p-3 text-warning">Cartelera</h1>
         <!-- Este div modifica el número de cards por fila -->
         <div class="row row-cols-1 row-cols-md-3 g-4">
-        <?php
-            // Verificar si hay resultados
-            if ($result->num_rows > 0) {
-                while ($data = $result->fetch_object()) {
-            ?>
+            <?php while ($data = $sql->fetch_object()) { ?>
             <div class="col">
                 <div class="card h-100">
                     <!-- La imagen es un enlace a la vista detallada de una película -->
@@ -44,12 +26,7 @@ if (isset($_GET['genre'])) {
                         class="btn btn-danger">Borrar<i class="fa-solid fa-trash-can"></i></a>
                 </div>
             </div>
-            <?php 
-        } 
-         } else{
-            //Si no hay resultados 
-            echo "<p>No se encontraron películas para el género seleccionado</p>";
-         }?>
+            <?php } ?>
         </div>
     </div>
 
@@ -57,6 +34,12 @@ if (isset($_GET['genre'])) {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+</script>
+<script>
+    function stopCarouselTransition() {
+        var carousel = document.getElementById('carouselExampleCaptions');
+        carousel.setAttribute('data-bs-interval', 'false');
+    }
 </script>
 </body>
 

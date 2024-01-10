@@ -43,6 +43,16 @@
                 </div>
             </div>
         </div>
+ <!-- Modificar el enlace de YouTube -->
+ <?php
+    $embed_link = str_replace('watch?v=', 'embed/', $data->video_path);
+    ?>
+
+        <!-- Aquí se añade el reproductor de video de YouTube con el enlace modificado -->
+        <div class="video-container">
+            <iframe width="100%" height="315" src="<?=$embed_link?>" frameborder="0" allowfullscreen></iframe>
+        </div>
+
         <?php 
         } 
          }

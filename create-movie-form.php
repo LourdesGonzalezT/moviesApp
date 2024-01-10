@@ -81,6 +81,10 @@ include "controller/create-movie.php" ;
                         <label for="image" class="form-label">Imagen de la cartelera</label>
                         <input type="file" class="form-control" name="image" id="image">
                     </div>
+                    <div class="col-12">
+                        <label for="video_path" class="form-label">Enlace a la película</label>
+                        <input type="text" class="form-control" name="video_path" required>
+                    </div>
                     <input type="submit" class="form-control btn btn-success mt-3" value="Register" name="btnregister">
                 </form>
             </div>

@@ -75,3 +75,7 @@ body{
 .oneCardContainer:hover h6 {
     color: red;
 }
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bd-violet-bg);
+    --bs-tooltip-color: var(--bs-white);
+  }

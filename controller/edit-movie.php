@@ -15,6 +15,7 @@
             $duration=$_POST["duration"];
             $actors=$_POST["actors"];
             $age_classification=$_POST["age_classification"];
+            $video_path=$_POST["video_path"];
             $idiom=$_POST["idiom"];
             $imgDirectory = "images/";
 
@@ -28,13 +29,16 @@
             
                     } 
             
-                    $image_path = $imgDirectory . $id_movie .'.'. $imgType;
-            
-                    if(move_uploaded_file($image,$image_path)){
-            
-                        $sql=$connection->query("UPDATE movies SET title='$title', director='$director', release_date='$release_date', genre='$genre', synopsis='$synopsis' , punctuation='$punctuation', duration='$duration', actors='$actors', genre='$genre', age_classification='$age_classification', idiom='$idiom', director='$director'  WHERE id_movie='$id_movie' ");
-                    
-                        $edit=$connection->query("UPDATE movies SET image_path='$image_path' WHERE id_movie='$id_movie'");
+                    $new_imagePath = $imgDirectory . $id_movie .'-'. $imgName;
+                    // $image_path = $imgDirectory . $id_movie .'.'. $imgType;
+             
+                     if(move_uploaded_file($image,$new_imagePath)){
+                         $edit=$connection->query("UPDATE movies SET image_path='$new_imagePath', title='$title', director='$director', release_date='$release_date', genre='$genre', synopsis='$synopsis' , punctuation='$punctuation', duration='$duration', actors='$actors', age_classification='$age_classification', idiom='$idiom', video_path='$video_path'  WHERE id_movie='$id_movie' ");
+             
+                         // $sql=$connection->query("UPDATE movies SET title='$title', director='$director', release_date='$release_date', genre='$genre', synopsis='$synopsis' , punctuation='$punctuation', duration='$duration', actors='$actors', age_classification='$age_classification', idiom='$idiom', video_path='$video_path'  WHERE id_movie='$id_movie' ");
+                     
+                         // $edit=$connection->query("UPDATE movies SET image_path='$new_imagePath' WHERE id_movie='$id_movie'");
+                     
                     
                         if ($edit==1) {
                             echo "<div class='alert alert-success'>imagen modificada con éxito</div>";

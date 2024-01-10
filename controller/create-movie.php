@@ -18,6 +18,7 @@ if(!empty($_POST["btnregister"])){
         $punctuation=$_POST["punctuation"];
         $duration=$_POST["duration"];
         $release_date=$_POST["release_date"];
+        $video_path=$_POST["video_path"];
         $image = $_FILES["image"]["tmp_name"];
         $imgName = $_FILES["image"]["name"]; 
         $imgType = strtolower(pathinfo($imgName, PATHINFO_EXTENSION)); 
@@ -25,11 +26,12 @@ if(!empty($_POST["btnregister"])){
     
         if($imgType == "jpg" || $imgType == "jpeg" || $imgType == "png" || $imgType == "webp" ) {
         
-            $register = $connection->query("INSERT INTO movies(title, director, idiom, genre, age_classification, synopsis, actors, punctuation, duration, release_date, image_path) VALUES ('$title', '$director', '$idiom', '$genre', '$age_classification', '$synopsis', '$actors', '$punctuation', '$duration', '$release_date', '')");
+            $register = $connection->query("INSERT INTO movies(title, director, idiom, genre, age_classification, synopsis, actors, punctuation, duration, release_date, video_path, image_path) VALUES ('$title', '$director', '$idiom', '$genre', '$age_classification', '$synopsis', '$actors', '$punctuation', '$duration', '$release_date', '$video_path', '')");
             if($register){
             $idRegister = $connection->insert_id;
-           
-            $image_path = $imgDirectory . $idRegister .'.'. $imgType;
+           //aquí estamos añadiendo la id al nombre de la imagen
+           $image_path = $imgDirectory . $idRegister .'-'. $imgName;
+            // $image_path = $imgDirectory . $idRegister .'.'. $imgType;
          
             $updateImage = $connection->query("UPDATE movies SET image_path='$image_path' WHERE id_movie='$idRegister'");
             

@@ -77,6 +77,11 @@
             <img src="<?= $data->image_path ?>" alt="Imagen actual" style="max-width: 30%;">
             <input type="file" class="form-control" name="image" id="image">
         </div>
+        <div class="col-12">
+            <label for="video_path" class="form-label">Enlace a la película</label>
+            <input type="text" class="form-control" name="video_path" id="video_path"
+                value="<?= $data->video_path ?>" required>
+                    </div>
         <button type="submit" class="btn btn-primary" name="btnedit" value="ok">Guardar cambios</button>
     </form>
     <?php } ?>

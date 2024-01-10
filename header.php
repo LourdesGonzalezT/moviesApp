@@ -32,15 +32,23 @@
                         <li class="nav-item">
                             <a class="nav-link" href="top-movies.php">Top Pelis</a>
                         </li>
+
                         <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Géneros
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Drama</a></li>
-                        <li><a class="dropdown-item" href="#">Adolescencia</a></li>
-                        <li><a class="dropdown-item" href="#">Comedia</a></li>
-                    </ul>
+                                <?php
+                                // Lista de géneros conocidos
+                                $allGenres = array("accion", "aventura", "comedia", "drama", "fantasia", "terror", "romance", "documental", "otros");
+
+                                // Crear opciones para cada género
+                                foreach ($allGenres as $selectedGenre) {
+                                    echo "<li><a class='dropdown-item' href='genre-movies.php?genre=$selectedGenre'>$selectedGenre</a></li>";
+                                }
+                                ?>
+                            </ul>
+
                         <li class="nav-item">
                             <a class="nav-link" href="#">Editar películas</a>
                         </li>
