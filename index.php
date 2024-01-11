@@ -65,7 +65,9 @@
         <!-- Este div modifica el número de cards por fila -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 g-4 container-cardsIndex">
             <?php while ($data = $sql->fetch_object()) { ?>
-            <div class="col cardIndex">
+                <div class="col cardIndex" data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip"
+        data-bs-title="<?=$data->title?>">
                 <div class="oneCardContainer h-100">
                     <a href="movie-details.php?id_movie=<?= $data->id_movie?>">
                         <div class="h-100">
@@ -79,12 +81,6 @@
                         </div>
                     </a>
                 </div>
-                <button type="button" class="btn btn-secondary"
-        data-bs-toggle="tooltip" data-bs-placement="top"
-        data-bs-custom-class="custom-tooltip"
-        data-bs-title="This top tooltip is themed via CSS variables.">
-  Custom tooltip
-</button>
             </div>
             <?php } ?>
         </div>
