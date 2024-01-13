@@ -58,9 +58,9 @@
                     </ul>
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                            <form class="d-flex" action="search-results.php" method="GET">
+                                <input class="form-control me-2" type="search" name="searching" placeholder="Buscar" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit" name="sendSearch">Buscar</button>
                             </form>
                         </li>
                         <li class="nav-item dropdown">

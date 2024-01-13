@@ -13,8 +13,9 @@
 ?>
 
 <main>
-  <h1>detalles</h1>
-    <div class="container-fluid p-3">
+    <div class="container-fuid containerDetails ">
+    <h1>Detalles</h1>
+    <div class="container-fluid p-3 ">
       <?php while($data=$sql->fetch_object()){?>
         <h1 class="display-6 text-center p-3 m-3">Aqui va el logo</h1>
         <div class="card mb-3" style="max-width: 540px;">
@@ -43,6 +44,8 @@
                 </div>
             </div>
         </div>
+    </div>
+  
  <!-- Modificar el enlace de YouTube -->
  <?php
     $embed_link = str_replace('watch?v=', 'embed/', $data->video_path);
