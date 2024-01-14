@@ -38,7 +38,8 @@
                             <?php
                             $year = date("Y", strtotime($data->release_date));
                             ?>
-                            <p class="card-text year"><?= $year ?></p>
+                            <p class="card-text year"><?= $year?></p>
+                            <p>holalkdjflaksjdfias</p>
                             <p class="card-text card-text-synopsisInCarousel"><?= $data->synopsis ?></p>
                             <a href="movie-details.php?id_movie=<?= $data->id_movie?>"
                                 class="btn btn-primary btn-sm d-inline-block text-center btn-carousel">Ver película</a>

@@ -81,5 +81,11 @@ body{
   }
 
   /*  movie-details */
-
  
+
+ .detailsCard{
+  max-width: 900px;
+  margin: 100px;
+  background-color: aqua;
+ }
+
