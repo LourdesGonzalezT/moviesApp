@@ -18,7 +18,6 @@
         <h1>Detalles</h1>
         <div class="container-fluid p-3 ficha" style="background-image: url('<?= $data->image_path ?>'); background-size: cover; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.5);">
         <div class="container-fluid ">
-                <h1 class="display-6 text-center p-3 m-3">Aqui va el logo</h1>
                 <div class="card mb-3 detailsCard">
                     <div class="row g-0">
                         <div class="col-md-6">
@@ -27,22 +26,15 @@
                         <div class="col-md-6">
                             <div class="card-body">
                                 <h5 class="card-title"><?=$data->title?></h5>
-                                <h5 class="card-title"><?=$data->punctuation?> <?=$data->duration?> min
-                                    <?=$data->release_date?></h5>
                                 <p class="card-text"><?=$data->synopsis?></p>
                                 <p class="card-text">Género: <?=$data->genre?></p>
+                                <p class="card-text">Director: <?=$data->director?></p>
                                 <p class="card-text">Actores: <?=$data->actors?></p>
-                                <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small> -->
-                                </p>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row g-0">
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5>Idioma <span class="badge bg-secondary"><?=$data->idiom?></span></h5>
-                                <p class="card-text">Actores: <?=$data->actors?></p>
+                                <p class="card-text">Duración: <?=$data->duration?> min</p>
+                                <p class="card-text">Idioma: <?=$data->idiom?></p>
+                                <p class="card-text">Fecha de estreno: <?=$data->release_date?></p>
+                                <p class="card-text">Puntuación: <?=$data->punctuation?></p>
+                                <p class="card-text">Clasificación por edad: <?=$data->age_classification?></p>
                             </div>
                         </div>
                     </div>

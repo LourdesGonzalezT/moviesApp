@@ -69,8 +69,8 @@
                                 Perfil
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Regístrate</a></li>
-                                <li><a class="dropdown-item" href="#">Accede</a></li>
+                                <li><a class="dropdown-item" href="signup-form.php">Regístrate</a></li>
+                                <li><a class="dropdown-item" href="login-form.php">Accede</a></li>
                                 <li><a class="dropdown-item" href="#">Salir</a></li>
                             </ul>
                         </li>
